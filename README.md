@@ -7,6 +7,6 @@
 
 - After grabbing your tokens from the developer portal, add the token keys to the keys.py file. *Make sure your repo is set to private as these credentials are sensitive!*
 
-- Uncomment lines 34 - 38 to send a test tweet out using your bot. 
+- Uncomment lines 35 - 38 to send a test tweet out using your bot. 
 
 - Feel free to expand the bot capabilities using tweepy's documentation.
