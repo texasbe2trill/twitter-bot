@@ -75,11 +75,12 @@ class TwitterStream(tweepy.StreamingClient):
                 # Retweet the tweet
                 twitter_client.retweet(tweet.id)
                 print("Tweet Successfully Retweeted")
-                print(tweet.text)
 
                 # Favorites the tweet
                 twitter_client.like(tweet.id)
                 print("Tweet Successfully Liked")
+
+                # Prints the tweet on screen
                 print(tweet.text)
 
                 # Starts a delay between tweets
