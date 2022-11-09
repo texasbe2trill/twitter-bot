@@ -93,8 +93,16 @@ class TwitterStream(tweepy.StreamingClient):
 # Creates the stream object
 stream = TwitterStream(bearer_token=BEARER_TOKEN)
 
-# Stream rules for twitter-bot to track. Uncomment line below to enable. Change #BrooklynNets!
-# stream.add_rules(tweepy.StreamRule("#BrooklynNets"))
+# Stream rules for twitter-bot to track. Uncomment line below to enable. Change #YourHashTagHere!
+# stream.add_rules(tweepy.StreamRule("#YourHashTagHere"))
+
+# Deletes Stream rules added in previous stream.add_rules(). Uncomment #stream.delete_rules below
+# You can obtain a list of rule ids from making a request to the following api endpoint:
+# curl "https://api.twitter.com/2/tweets/search/stream/rules" -H "Authorization: Bearer XXXXXXXXXXX
+
+# stream.delete_rules(
+#     ids=["1590108706184007690", "1590143217504342719"]
+# )
 
 # Starts the Stream
 stream.filter()
