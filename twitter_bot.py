@@ -22,7 +22,7 @@ twitter_auth = tweepy.OAuth1UserHandler(
 )
 
 # Initialize tweepy api object using the authentication handler object
-twitter_api = tweepy.API(twitter_auth)
+twitter_api = tweepy.API(twitter_auth, wait_on_rate_limit=True)
 
 # Validates credentials. Prints exception if something is wrong.
 class AuthenticationUnsuccessful(Exception):
@@ -85,7 +85,7 @@ class TwitterStream(tweepy.StreamingClient):
                 print("----------------------------------------------------------")
 
                 # Starts a delay between tweets
-                time.sleep(0.5)
+                time.sleep(30)
 
             except RetweetUnsuccessful as exception:
                 print(exception)
@@ -95,11 +95,11 @@ class TwitterStream(tweepy.StreamingClient):
 stream = TwitterStream(bearer_token=BEARER_TOKEN)
 
 # Stream rules for twitter-bot to track. Uncomment line below to enable. Change #YourHashTagHere!
-# stream.add_rules(tweepy.StreamRule("#YourHashTagHere"))
+# stream.add_rules(tweepy.StreamRule('"#YourHashTagHere" -is:retweet -is:reply -is:quote'))
 
 # Deletes Stream rules added in previous stream.add_rules(). Uncomment #stream.delete_rules below
 # You can obtain a list of rule ids from making a request to the following api endpoint:
-# curl "https://api.twitter.com/2/tweets/search/stream/rules" -H "Authorization: Bearer XXXXXXXXXXX
+# curl "https://api.twitter.com/2/tweets/search/stream/rules" -H "Authorization: Bearer XXXXXXXXXXX"
 
 # stream.delete_rules(
 #     ids=["1590108706184007690", "1590143217504342719"]
