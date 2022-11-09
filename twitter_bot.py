@@ -57,7 +57,7 @@ twitter_auth = tweepy.OAuth1UserHandler(
 )
 
 # Initialize tweepy api object using the authentication handler object
-twitter_api = tweepy.API(twitter_auth)
+twitter_api = tweepy.API(twitter_auth, wait_on_rate_limit=True)
 
 # Class for StreamingClient
 class TwitterStream(tweepy.StreamingClient):
@@ -82,6 +82,7 @@ class TwitterStream(tweepy.StreamingClient):
 
                 # Prints the tweet on screen
                 print(tweet.text)
+                print("----------------------------------------------------------")
 
                 # Starts a delay between tweets
                 time.sleep(0.5)
