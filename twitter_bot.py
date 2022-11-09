@@ -66,6 +66,7 @@ class TwitterStream(tweepy.StreamingClient):
     def on_connect(self):
         """Prints Sucessfully Connected once stream is initialized"""
         print("Successfully Connected via Twitter Stream")
+        print("----------------------------------------------------------")
 
     def on_tweet(self, tweet):
         """Functions that checks if a tweet passes through the stream"""
