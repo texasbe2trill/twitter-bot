@@ -80,6 +80,7 @@ class TwitterStream(tweepy.StreamingClient):
                 # Favorites the tweet
                 twitter_client.like(tweet.id)
                 print("Tweet Successfully Liked")
+                print("\n")
 
                 # Prints the tweet on screen
                 print(tweet.text)
