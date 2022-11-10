@@ -105,7 +105,7 @@ class TwitterStream(tweepy.StreamingClient):
 stream = TwitterStream(bearer_token=BEARER_TOKEN)
 
 # Stream rules for twitter-bot to track. Uncomment line below to enable. Change #YourHashTagHere!
-# stream.add_rules(tweepy.StreamRule('"#YourHashTagHere" -is:retweet -is:reply -is:quote'))
+# stream.add_rules(tweepy.StreamRule('"#YourHashTagHere" lang:en -is:retweet -is:reply -is:quote'))
 
 # Deletes Stream rules added in previous stream.add_rules(). Uncomment #stream.delete_rules below
 # You can obtain a list of rule ids from making a request to the following api endpoint:
