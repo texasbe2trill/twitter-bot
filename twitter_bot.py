@@ -4,7 +4,15 @@
 """
 import time
 import tweepy
+import colorama
+from colorama import Back
 import keys
+
+# Initialize colorama
+colorama.init(autoreset=True)
+
+# Font color for print statements
+twitter_color = Back.BLUE
 
 # Assign keys
 API_KEY = keys.API_KEY
@@ -36,7 +44,7 @@ class RetweetUnsuccessful(Exception):
 
 try:
     print(twitter_api.verify_credentials())
-    print("Successfully Logged In")
+    print(twitter_color + "Successfully Logged In")
 except tweepy.TweepyException as e:
     print(e)
 except AuthenticationUnsuccessful as e:
@@ -65,7 +73,7 @@ class TwitterStream(tweepy.StreamingClient):
 
     def on_connect(self):
         """Prints Sucessfully Connected once stream is initialized"""
-        print("Successfully Connected via Twitter Stream")
+        print(twitter_color + "Successfully Connected via Twitter Stream")
         print("----------------------------------------------------------")
 
     def on_tweet(self, tweet):
@@ -75,11 +83,11 @@ class TwitterStream(tweepy.StreamingClient):
             try:
                 # Retweet the tweet
                 twitter_client.retweet(tweet.id)
-                print("Tweet Successfully Retweeted")
+                print(twitter_color + "Tweet Successfully Retweeted")
 
                 # Favorites the tweet
                 twitter_client.like(tweet.id)
-                print("Tweet Successfully Liked")
+                print(twitter_color + "Tweet Successfully Liked")
                 print("\n")
 
                 # Prints the tweet on screen
