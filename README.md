@@ -1,5 +1,5 @@
 # Twitter Bot
- Creates a Twitter bot that retweets and likes tweets using tweepy in Python. Feel free to view the documentation here on how to expand the bot's capabilities: [Tweepy Documentation](https://docs.tweepy.org/en/stable/)
+ Creates a Twitter bot that retweets and likes tweets using tweepy in Python. On startup, the bot also automatically follows users who are following the bot. View the documentation here on how to expand the bot's capabilities: [Tweepy Documentation](https://docs.tweepy.org/en/stable/)
 
 ## Instructions
 - Signup for developer access to Twitter using the instructions provided in this [video](https://www.youtube.com/watch?v=2UBcRiddwAo)
