@@ -58,7 +58,7 @@ except AuthenticationUnsuccessful as e:
 # Send a test tweet. Uncomment lines below to test twitter-bot!
 # twitter_api.update_status(
 #     status='Hello World! "This tweet was sent using #tweepy with python." \
-# #techtwitter #blacktechtwitter'
+# #YourHashTagHere'
 # )
 
 # Initialize oauth handler and set access token
