@@ -42,6 +42,11 @@ class RetweetUnsuccessful(Exception):
     """Raised when retweet/like is not successful"""
 
 
+# Prints exception if something is wrong with following.
+class FollowUnsuccessful(Exception):
+    """Raised when a follow request is not successful"""
+
+
 try:
     print(twitter_api.verify_credentials())
     print(twitter_color + "Successfully Logged In")
@@ -76,6 +81,18 @@ class TwitterStream(tweepy.StreamingClient):
         print(twitter_color + "Successfully Connected via Twitter Stream")
         print("----------------------------------------------------------")
 
+        # Follows new followers on connect
+        twitter_follow = tweepy.Cursor(twitter_api.get_followers).items()
+        try:
+
+            for follower in twitter_follow:
+                follower.follow()
+                print(twitter_color + "Now Following: " + follower.screen_name)
+                print("----------------------------------------------------------")
+
+        except FollowUnsuccessful as follow_exception:
+            print(follow_exception)
+
     def on_tweet(self, tweet):
         """Functions that checks if a tweet passes through the stream"""
         if not twitter_client.retweet(tweet.id) or twitter_client.like(tweet.id):
@@ -105,7 +122,11 @@ class TwitterStream(tweepy.StreamingClient):
 stream = TwitterStream(bearer_token=BEARER_TOKEN)
 
 # Stream rules for twitter-bot to track. Uncomment line below to enable. Change #YourHashTagHere!
+# or use a Search Term without a hashtag! (Example # 2)
 # stream.add_rules(tweepy.StreamRule('"#YourHashTagHere" lang:en -is:retweet -is:reply -is:quote'))
+
+# Stream Rules Example # 2
+# stream.add_rules(tweepy.StreamRule('"Python" lang:en -is:retweet -is:reply -is:quote'))
 
 # Deletes Stream rules added in previous stream.add_rules(). Uncomment #stream.delete_rules below
 # You can obtain a list of rule ids from making a request to the following api endpoint:
