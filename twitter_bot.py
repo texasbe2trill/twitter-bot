@@ -83,12 +83,14 @@ class TwitterStream(tweepy.StreamingClient):
 
         # Follows new followers on connect
         twitter_follow = tweepy.Cursor(twitter_api.get_followers).items()
+
         try:
 
             for follower in twitter_follow:
-                follower.follow()
-                print(twitter_color + "Now Following: " + follower.screen_name)
-                print("----------------------------------------------------------")
+                if follower not in twitter_follow:
+                    follower.follow()
+                    print(twitter_color + "Now Following: " + follower.screen_name)
+                    print("----------------------------------------------------------")
 
         except FollowUnsuccessful as follow_exception:
             print(follow_exception)
