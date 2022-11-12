@@ -32,7 +32,7 @@ twitter_auth = tweepy.OAuth1UserHandler(
 # Initialize tweepy api object using the authentication handler object
 twitter_api = tweepy.API(twitter_auth, wait_on_rate_limit=True)
 
-# Validates credentials. Prints exception if something is wrong.
+# Prints exception if something is wrong with authentication.
 class AuthenticationUnsuccessful(Exception):
     """Raised when authentication is not successful"""
 
@@ -47,6 +47,7 @@ class FollowUnsuccessful(Exception):
     """Raised when a follow request is not successful"""
 
 
+# Tries to validate credentials
 try:
     print(twitter_api.verify_credentials())
     print(twitter_color + "Successfully Logged In")
@@ -124,12 +125,18 @@ class TwitterStream(tweepy.StreamingClient):
 # Creates the stream object
 stream = TwitterStream(bearer_token=BEARER_TOKEN)
 
+
+# More settings for add_rules can be found here:
+# https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/integrate/build-a-rule#examples
+
 # Stream rules for twitter-bot to track. Uncomment line below to enable. Change #YourHashTagHere!
-# or use a Search Term without a hashtag! (Example # 2)
 # stream.add_rules(tweepy.StreamRule('"#YourHashTagHere" lang:en -is:retweet -is:reply -is:quote'))
 
 # Stream Rules Example # 2
 # stream.add_rules(tweepy.StreamRule('"Python" lang:en -is:retweet -is:reply -is:quote'))
+
+# Stream Rules Example # 3
+# stream.add_rules(tweepy.StreamRule("from:usernamehere"))
 
 # Deletes Stream rules added in previous stream.add_rules(). Uncomment #stream.delete_rules below
 # You can obtain a list of rule ids from making a request to the following api endpoint:

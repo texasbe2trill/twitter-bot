@@ -11,5 +11,4 @@
 
 - Uncomment #stream.add_rules(tweepy.StreamRule("#hashtaghere")) to use the rule to track a specific hashtag or hashtags!
     - Or see Example # 2 in twitter_bot.py to use a rule that tracks a keyword(s).
-
-- Feel free to expand the bot capabilities using tweepy's documentation.
+    - More info on creating/modifying your own rule can be found [here](https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/integrate/build-a-rule#examples)
