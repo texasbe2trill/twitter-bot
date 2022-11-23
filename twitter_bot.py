@@ -91,7 +91,9 @@ class TwitterStream(tweepy.StreamingClient):
 
                 try:
                     follower.follow()
-                    print(twitter_color + "Now Following: " + follower.screen_name)
+                    print(
+                        twitter_color + "Now Following: " + "@" + follower.screen_name
+                    )
                     print("----------------------------------------------------------")
 
                 except FollowUnsuccessful as follow_exception:
@@ -116,7 +118,7 @@ class TwitterStream(tweepy.StreamingClient):
                 print("----------------------------------------------------------")
 
                 # Starts a delay between tweets
-                time.sleep(30)
+                time.sleep(5)
 
             except RetweetUnsuccessful as exception:
                 print(exception)
